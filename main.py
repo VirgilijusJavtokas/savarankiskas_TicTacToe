@@ -28,8 +28,6 @@ def tikrinimas(dict):
 zaidimas = True
 ejimas = 1
 langeliai = {1 : "1", 2 : "2", 3 : "3", 4 : "4", 5 : "5", 6 : "6", 7 : "7", 8 : "8", 9 : "9"}
-x_pergales = 0
-o_pergales = 0
 
 print("\nNULIUKŲ IR KRYŽIUKŲ ŽAIDIMAS")
 print("----------------------------")
@@ -40,6 +38,8 @@ Jei norite pabaigti žaidimą - iveskite 'N'
 PRADEDAM !\n""")
 atvaizduoti_lentele(langeliai)
 ejimai = []
+x_pergales = 0
+o_pergales = 0
 
 while True:
     pasirinkimas = input("Pasirinkite vieta ivesdami ja zyminti skaiciu (veskite 'B' jei norite iseiti is zaidimo): ")
@@ -54,6 +54,8 @@ while True:
                 if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
                 if tikrinimas(langeliai) == True:
                     print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
+                    if langeliai[int(pasirinkimas)] == "X": x_pergales += 1
+                    elif langeliai[int(pasirinkimas)] == "0": o_pergales += 1
                     break
             else:
                 print("Ivedete neteisinga ejima - bandykite dar karta.")
