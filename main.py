@@ -12,7 +12,7 @@ def kas_eina(ejimas):
         return "X"
 
 zaidimas = True
-ejimas = 0
+ejimas = 1
 langeliai = {1 : "1", 2 : "2", 3 : "3", 4 : "4", 5 : "5", 6 : "6", 7 : "7", 8 : "8", 9 : "9"}
 
 print("\nNULIUKŲ IR KRYŽIUKŲ ŽAIDIMAS")
@@ -23,13 +23,20 @@ Pirmas žaidėjas žaidžia 'X', o antras '0'.
 Jei norite pabaigti žaidimą - iveskite 'N'
 PRADEDAM !\n""")
 atvaizduoti_lentele(langeliai)
+ejimai = []
 
 while True:
-    pasirinkimas = input("Pasirinkite vieta ivesdami ja zyminti skaiciu: ")
-    ejimas += 1
-    if pasirinkimas != "N":
-        langeliai[int(pasirinkimas)] = kas_eina(ejimas)
-        print("")
-        atvaizduoti_lentele(langeliai)
+    pasirinkimas = input("Pasirinkite vieta ivesdami ja zyminti skaiciu (veskite 'B' jei norite iseiti is zaidimo): ")
+    if pasirinkimas == "B": break
     else:
-        break
+        if pasirinkimas.isdigit():
+            if int(pasirinkimas) in range(1, 9) and int(pasirinkimas) not in ejimai:
+                langeliai[int(pasirinkimas)] = kas_eina(ejimas)
+                print("")
+                atvaizduoti_lentele(langeliai)
+                ejimas += 1
+                ejimai.append(int(pasirinkimas))
+            else:
+                print("Ivedete neteisinga ejima - bandykite dar karta.")
+        else:
+            print("Ivedete neteisinga ejima - bandykite dar karta.")
