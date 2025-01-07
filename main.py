@@ -11,9 +11,25 @@ def kas_eina(ejimas):
     else:
         return "X"
 
+def tikrinimas(dict):
+    #tikrina eilutes
+    if (langeliai[1] == langeliai[2] == langeliai[3] or langeliai[4] == langeliai[5] == langeliai[6] or \
+            langeliai[7] == langeliai[8] == langeliai[9]):
+        return  True
+    # tikrina stulpelius
+    elif (langeliai[1] == langeliai[4] == langeliai[5] or langeliai[2] == langeliai[5] == langeliai[8] or \
+        langeliai[3] == langeliai[6] == langeliai[9]):
+        return True
+        # tikrina istrizaines
+    elif (langeliai[1] == langeliai[5] == langeliai[9] or langeliai[7] == langeliai[5] == langeliai[3]):
+        return True
+    else: return False
+
 zaidimas = True
 ejimas = 1
 langeliai = {1 : "1", 2 : "2", 3 : "3", 4 : "4", 5 : "5", 6 : "6", 7 : "7", 8 : "8", 9 : "9"}
+x_pergales = 0
+o_pergales = 0
 
 print("\nNULIUKŲ IR KRYŽIUKŲ ŽAIDIMAS")
 print("----------------------------")
@@ -30,13 +46,18 @@ while True:
     if pasirinkimas == "B": break
     else:
         if pasirinkimas.isdigit():
-            if int(pasirinkimas) in range(1, 9) and int(pasirinkimas) not in ejimai:
+            if int(pasirinkimas) in range(1, 10) and int(pasirinkimas) not in ejimai:
                 langeliai[int(pasirinkimas)] = kas_eina(ejimas)
                 print("")
                 atvaizduoti_lentele(langeliai)
                 ejimas += 1
-                ejimai.append(int(pasirinkimas))
+                if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
+                if tikrinimas(langeliai) == True:
+                    print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
+                    break
             else:
                 print("Ivedete neteisinga ejima - bandykite dar karta.")
         else:
             print("Ivedete neteisinga ejima - bandykite dar karta.")
+
+#
