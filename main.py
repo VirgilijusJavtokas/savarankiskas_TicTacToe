@@ -39,47 +39,51 @@ o_pergales = 0
 print("\nNULIUKŲ IR KRYŽIUKŲ ŽAIDIMAS")
 print("----------------------------")
 print("""Taisyklės: 
-Pirmas žaidėjas žaidžia 'X', o antras '0'. 
-Žaidėjas įveda skaičių, kuris žymi vietą lentelėje.
-Jei norite bet kada pabaigti žaidimą - iveskite 'B'
-PRADEDAM !\n""")
-zaidimas = True
+Pirmas žaidėjas norėdamas padaryti ėjimą įveda skaičių, kuris žymi vietą lentelėje ir spaudžia ENTER.
+tada tą patį daro antras žaidėjas. Žaidimas tęsiasi kol vienas iš žaidėjų laimi.
+Jei norite bet kada pabaigti žaidimą - iveskite 'B'\n""")
+
+zaidejas1 = input("Įveskite pirmo žaidėjo vardą: ")
+print(f"Sveiki {zaidejas1}! Jūs pradėsite pirmas ir žaisite su 'X' ženkleliu.")
+zaidejas2 = input("Įveskite antro žaidėjo vardą: ")
+print(f"Sveiki {zaidejas2}! Jūs žaisite su '0' ženkleliu.\n")
+print("PRADEDAM!\n"
+
 atvaizduoti_lentele(langeliai)
 
 while True:
-    # while zaidimas:
-        pasirinkimas = input("Pasirinkite vietą įvesdami ją žymintį skaičių (veskite 'B' jei norite išeiti iš žaidimo): ")
-        if pasirinkimas == "B": break
-        else:
-            if pasirinkimas.isdigit():
-                if int(pasirinkimas) in range(1, 10) and int(pasirinkimas) not in ejimai:
-                    langeliai[int(pasirinkimas)] = kas_eina(ejimas)
-                    print("")
-                    atvaizduoti_lentele(langeliai)
-                    ejimas += 1
-                    if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
-                    if tikrinimas(langeliai) == True:
-                        print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
-                        if langeliai[int(pasirinkimas)] == "X": x_pergales += 1
-                        elif langeliai[int(pasirinkimas)] == "0": o_pergales += 1
+    pasirinkimas = input("Pasirinkite vietą įvesdami ją žymintį skaičių (veskite 'B' jei norite išeiti iš žaidimo): ")
+    if pasirinkimas == "B": break
+    else:
+        if pasirinkimas.isdigit():
+            if int(pasirinkimas) in range(1, 10) and int(pasirinkimas) not in ejimai:
+                langeliai[int(pasirinkimas)] = kas_eina(ejimas)
+                print("")
+                atvaizduoti_lentele(langeliai)
+                ejimas += 1
+                if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
+                if tikrinimas(langeliai) == True:
+                    print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
+                    if langeliai[int(pasirinkimas)] == "X": x_pergales += 1
+                    elif langeliai[int(pasirinkimas)] == "0": o_pergales += 1
 
-                        #pasirinkimas ar zaisti toliau eliminuojant neteisinguas ivestis
-                        while True:
-                            arzaidziam = input("Ar norite zaisti dar karta? (T/N): ")
-                            if arzaidziam == "T":
-                                langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
-                                atvaizduoti_lentele(langeliai)
-                                ejimas = 1
-                                ejimai = []
-                                print("Naujas žaidimas prasideda!")
-                                break
-                            elif arzaidziam == "N":
-                                exit(f"Žaidimas baigtas. 'X' žaidėjo pergalės: {x_pergales}, 'O' žaidėjo pergalės: {o_pergales}")
-                                break
-                            else:
-                                print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
-                else:
-                    print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
+                    #pasirinkimas ar zaisti toliau eliminuojant neteisinguas ivestis
+                    while True:
+                        arzaidziam = input("Ar norite zaisti dar karta? (T/N): ")
+                        if arzaidziam == "T":
+                            langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
+                            atvaizduoti_lentele(langeliai)
+                            ejimas = 1
+                            ejimai = []
+                            print("Naujas žaidimas prasideda!")
+                            break
+                        elif arzaidziam == "N":
+                            exit(f"Žaidimas baigtas. 'X' žaidėjo pergalės: {x_pergales}, 'O' žaidėjo pergalės: {o_pergales}")
+                            break
+                        else:
+                            print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
             else:
-                print("Įvedėte neteisingą ėjimą - bandykite dar kartą")
+                print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
+        else:
+            print("Įvedėte neteisingą ėjimą - bandykite dar kartą")
 #
