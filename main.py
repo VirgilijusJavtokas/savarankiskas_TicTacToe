@@ -47,7 +47,7 @@ zaidejas1 = input("Įveskite pirmo žaidėjo vardą: ")
 print(f"Sveiki {zaidejas1}! Jūs pradėsite pirmas ir žaisite su 'X' ženkleliu.")
 zaidejas2 = input("Įveskite antro žaidėjo vardą: ")
 print(f"Sveiki {zaidejas2}! Jūs žaisite su '0' ženkleliu.\n")
-print("PRADEDAM!\n"
+print("PRADEDAM!\n")
 
 atvaizduoti_lentele(langeliai)
 
@@ -63,9 +63,13 @@ while True:
                 ejimas += 1
                 if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
                 if tikrinimas(langeliai) == True:
-                    print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
-                    if langeliai[int(pasirinkimas)] == "X": x_pergales += 1
-                    elif langeliai[int(pasirinkimas)] == "0": o_pergales += 1
+                    # print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
+                    if langeliai[int(pasirinkimas)] == "X":
+                        x_pergales += 1
+                        print(f"Laimejo {zaidejas1}!")
+                    elif langeliai[int(pasirinkimas)] == "0":
+                        o_pergales += 1
+                        print(f"Laimejo {zaidejas2}!")
 
                     #pasirinkimas ar zaisti toliau eliminuojant neteisinguas ivestis
                     while True:
@@ -78,7 +82,7 @@ while True:
                             print("Naujas žaidimas prasideda!")
                             break
                         elif arzaidziam == "N":
-                            exit(f"Žaidimas baigtas. 'X' žaidėjo pergalės: {x_pergales}, 'O' žaidėjo pergalės: {o_pergales}")
+                            exit(f"Žaidimas baigtas. {zaidejas1} pergalės {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
                             break
                         else:
                             print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
