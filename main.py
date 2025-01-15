@@ -29,7 +29,6 @@ def tikrinimas(dict): #tikrina ar laimejo
         return True
     else: return False
 
-
 langeliai = {1 : "1", 2 : "2", 3 : "3", 4 : "4", 5 : "5", 6 : "6", 7 : "7", 8 : "8", 9 : "9"}
 ejimas = 1
 ejimai = []
@@ -40,8 +39,8 @@ print("\nNULIUKŲ IR KRYŽIUKŲ ŽAIDIMAS")
 print("----------------------------")
 print("""Taisyklės: 
 Pirmas žaidėjas norėdamas padaryti ėjimą įveda skaičių, kuris žymi vietą lentelėje ir spaudžia ENTER.
-tada tą patį daro antras žaidėjas. Žaidimas tęsiasi kol vienas iš žaidėjų laimi.
-Jei norite bet kada pabaigti žaidimą - iveskite 'B'\n""")
+Tada tą patį daro antras žaidėjas. Žaidimas tęsiasi kol vienas iš žaidėjų laimi.
+Jei norėsitte bet kada žaidimo metu jį pabaigti - iveskite 'B'\n""")
 
 zaidejas1 = input("Įveskite pirmo žaidėjo vardą: ")
 print(f"Sveiki {zaidejas1}! Jūs pradėsite pirmas ir žaisite su 'X' ženkleliu.")
@@ -63,15 +62,13 @@ while True:
                 ejimas += 1
                 if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
                 if tikrinimas(langeliai) == True:
-                    # print(f"Laimejo {langeliai[int(pasirinkimas)]} zaidejas")
                     if langeliai[int(pasirinkimas)] == "X":
                         x_pergales += 1
                         print(f"Laimejo {zaidejas1}!")
                     elif langeliai[int(pasirinkimas)] == "0":
                         o_pergales += 1
                         print(f"Laimejo {zaidejas2}!")
-
-                    #pasirinkimas ar zaisti toliau eliminuojant neteisinguas ivestis
+                    # pasirinkimas ar zaisti toliau eliminuojant neteisinguas ivestis
                     while True:
                         arzaidziam = input("Ar norite zaisti dar karta? (T/N): ")
                         if arzaidziam == "T":
@@ -82,12 +79,26 @@ while True:
                             print("Naujas žaidimas prasideda!")
                             break
                         elif arzaidziam == "N":
-                            exit(f"Žaidimas baigtas. {zaidejas1} pergalės {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
+                            quit(
+                                f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
+                        else:
+                            print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
+                elif len(ejimai) == 9:
+                    print("Lygiosios")
+                    while True:
+                        arzaidziam = input("Ar norite zaisti dar karta? (T/N): ")
+                        if arzaidziam == "T":
+                            langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
+                            atvaizduoti_lentele(langeliai)
+                            ejimas = 1
+                            ejimai = []
+                            print("Naujas žaidimas prasideda!")
                             break
+                        elif arzaidziam == "N":
+                            quit(f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
                         else:
                             print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
             else:
                 print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
         else:
             print("Įvedėte neteisingą ėjimą - bandykite dar kartą")
-#
