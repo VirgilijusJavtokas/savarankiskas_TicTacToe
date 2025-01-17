@@ -3,6 +3,7 @@
 # užkomentuota.
 
 # from lentele import atvaizduoti_lentele
+
 def atvaizduoti_lentele(langeliai):
     lentele = (f" {langeliai[1]} | {langeliai[2]} | {langeliai[3]} \n-----------\n"
                f" {langeliai[4]} | {langeliai[5]} | {langeliai[6]} \n-----------\n "
