@@ -1,27 +1,44 @@
 def atvaizduoti_lentele(langeliai):
+    '''
+    Metodas atvaizduoja žaidimo lentelę.
+    :param langeliai: pradžioje žaidimo laukai nuo 1 iki 9, o po to keičiami
+    pagal atitinkamo žaidėjo ėjimą.
+    '''
     lentele = (f" {langeliai[1]} | {langeliai[2]} | {langeliai[3]} \n-----------\n"
                f" {langeliai[4]} | {langeliai[5]} | {langeliai[6]} \n-----------\n "
                f"{langeliai[7]} | {langeliai[8]} | {langeliai[9]} ")
     print(lentele)
 
 
-def kas_eina(ejimas):  # tikrina kieno ejimas
+def kas_eina(ejimas):
+    '''
+    Metodas priskiria kas padro ėjimą. Pirmas ir tolimesni nelyginiai ėjimai
+    yra žaidėjo kuris žaidžia X, o antras ir kiti lyginiai - žaidėjo, kuris
+    žaidžia 0.
+    :param ejimas: ėjimai nuo 1 iki max. 9
+    :return: X arba 0 priklausomai koks žaidėjas daro ėjimą.
+    '''
     if ejimas % 2 == 0:
         return "0"
     else:
         return "X"
 
 
-def tikrinimas(langeliai):  # tikrina ar laimejo
-    # tikrina eilutes del laimejimo
+def tikrinimas(langeliai):
+    """
+    Metodas tikrina ar kuris nors iš žaidėjų laimėjo, t.y. patikrina ar nėra
+    užbrauktos eilutės, stulpeliai ar įstrižainės
+    :param langeliai: ima langelius iš lentelės po kiekvieno ėjimo
+    :return: ar yra laimėjimas, ar nėra laimėjimo
+    """
     if (langeliai[1] == langeliai[2] == langeliai[3] or langeliai[4] == langeliai[5] == langeliai[6] or \
             langeliai[7] == langeliai[8] == langeliai[9]):
         return True
-    # tikrina stulpelius del laimejimo
+
     elif (langeliai[1] == langeliai[4] == langeliai[7] or langeliai[2] == langeliai[5] == langeliai[8] or \
           langeliai[3] == langeliai[6] == langeliai[9]):
         return True
-        # tikrina istrizaines del laimejimo
+
     elif (langeliai[1] == langeliai[5] == langeliai[9] or langeliai[7] == langeliai[5] == langeliai[3]):
         return True
     else:
@@ -29,6 +46,15 @@ def tikrinimas(langeliai):  # tikrina ar laimejo
 
 
 def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
+    """
+    Metodas tikrina kokį pasirinkimą padarė žaidėjas
+    :param zaidejas1: pirmo žaidėjo vardas, kurį jis įvedė
+    :param zaidejas2: antro žaidėjo vardas, kurį jis įvedė
+    :param x_pergales: pirmo žaidėjo, kuris žaidžia X'u pergalės
+    :param o_pergales: antro žaidėjo, kuris žaidžia 0'u pergalės
+    :return: pasirinkus tęsti žaidima gražina atnaujintą ėjimo numerį, tuščią
+    ėjimų sąrašą ir atnaujintą lentelę paruoštą naujam žaidimui
+    """
     while True:
         arzaidziam = input("Ar norite zaisti dar karta? (T/N): \n")
         if arzaidziam == "T":

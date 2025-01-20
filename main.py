@@ -1,6 +1,10 @@
-from pagalbinis import atvaizduoti_lentele, kas_eina, tikrinimas, ar_zaidziam
+from pagalbinis import (atvaizduoti_lentele,
+                        kas_eina,
+                        tikrinimas,
+                        ar_zaidziam)
 
-langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
+langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8",
+             9: "9"}
 ejimas = 1
 ejimai = []
 x_pergales = 0
@@ -33,7 +37,7 @@ while True:
                 atvaizduoti_lentele(langeliai)
                 ejimas += 1
                 if int(pasirinkimas) not in ejimai: ejimai.append(int(pasirinkimas))
-                if tikrinimas(langeliai) == True:
+                if tikrinimas(langeliai):
                     if langeliai[int(pasirinkimas)] == "X":
                         x_pergales += 1
                         print(f"Laimejo {zaidejas1}!")
@@ -49,4 +53,3 @@ while True:
                 print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
         else:
             print("Įvedėte neteisingą ėjimą - bandykite dar kartą")
-
