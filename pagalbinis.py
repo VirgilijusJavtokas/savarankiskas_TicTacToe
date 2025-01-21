@@ -56,7 +56,7 @@ def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
     ėjimų sąrašą ir atnaujintą lentelę paruoštą naujam žaidimui
     """
     while True:
-        arzaidziam = input("Ar norite zaisti dar karta? (T/N): \n")
+        arzaidziam = input("Ar norite žaisti dar kartą? (T/N): \n")
         if arzaidziam == "T":
             langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
             atvaizduoti_lentele(langeliai)
@@ -65,8 +65,7 @@ def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
             print("Naujas žaidimas prasideda!")
             break
         elif arzaidziam == "N":
-            quit(
-                f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
+            quit(f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
         else:
-            print("Įvedėte neteisingą ėjimą - bandykite dar kartą.")
+            print("Įvedėte negalimą pasirinkimą - bandykite dar kartą.")
     return ejimas, ejimai, langeliai

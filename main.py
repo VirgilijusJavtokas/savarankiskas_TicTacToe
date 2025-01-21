@@ -14,8 +14,9 @@ print("\nNULIUKŲ IR KRYŽIUKŲ ŽAIDIMAS")
 print("----------------------------")
 print("""Taisyklės: 
 Pirmas žaidėjas norėdamas padaryti ėjimą įveda skaičių, kuris žymi vietą lentelėje ir spaudžia ENTER.
-Tada tą patį daro antras žaidėjas. Žaidimas tęsiasi kol vienas iš žaidėjų laimi.
-Jei norėsitte bet kada žaidimo metu jį pabaigti - iveskite 'B'\n""")
+Tada tą patį daro antras žaidėjas. Žaidimas tęsiasi kol vienas iš žaidėjų laimi, t.y. savo pasirinktu
+simboliu užpildo arba eilutę, arba stulpelį, arba įstrižainę.
+Jei norėsite bet kada žaidimo metu jį pabaigti - iveskite 'B'\n""")
 
 zaidejas1 = input("Įveskite pirmo žaidėjo vardą: ")
 print(f"Sveiki {zaidejas1}! Jūs pradėsite pirmas ir žaisite su 'X' ženkleliu.\n")
