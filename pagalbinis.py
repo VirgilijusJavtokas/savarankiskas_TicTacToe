@@ -1,3 +1,12 @@
+"""
+Šiame faile yra aprašyti pagalbiniai metodai, kurie padeda atvaizduoti žaidimo
+lentelę, priskiria simbolį pagal tai kas atlieka ėjimą, tikrina ar yra
+laimėtojas ir ar žaidėjai nori tęsti žaidimą.
+"""
+
+import sys
+
+
 def atvaizduoti_lentele(langeliai):
     '''
     Metodas atvaizduoja žaidimo lentelę.
@@ -12,7 +21,7 @@ def atvaizduoti_lentele(langeliai):
 
 def kas_eina(ejimas):
     '''
-    Metodas priskiria kas padro ėjimą. Pirmas ir tolimesni nelyginiai ėjimai
+    Metodas priskiria kas atlieka ėjimą. Pirmas ir tolimesni nelyginiai ėjimai
     yra žaidėjo kuris žaidžia X, o antras ir kiti lyginiai - žaidėjo, kuris
     žaidžia 0.
     :param ejimas: ėjimai nuo 1 iki max. 9
@@ -20,8 +29,7 @@ def kas_eina(ejimas):
     '''
     if ejimas % 2 == 0:
         return "0"
-    else:
-        return "X"
+    return "X"
 
 
 def tikrinimas(langeliai):
@@ -35,14 +43,13 @@ def tikrinimas(langeliai):
             langeliai[7] == langeliai[8] == langeliai[9]):
         return True
 
-    elif (langeliai[1] == langeliai[4] == langeliai[7] or langeliai[2] == langeliai[5] == langeliai[8] or \
-          langeliai[3] == langeliai[6] == langeliai[9]):
+    if (langeliai[1] == langeliai[4] == langeliai[7] or langeliai[2] == langeliai[5] == langeliai[8] or
+            langeliai[3] == langeliai[6] == langeliai[9]):
         return True
 
-    elif (langeliai[1] == langeliai[5] == langeliai[9] or langeliai[7] == langeliai[5] == langeliai[3]):
+    if (langeliai[1] == langeliai[5] == langeliai[9] or langeliai[7] == langeliai[5] == langeliai[3]):
         return True
-    else:
-        return False
+    return False
 
 
 def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
@@ -64,8 +71,8 @@ def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
             ejimai = []
             print("Naujas žaidimas prasideda!")
             break
-        elif arzaidziam == "N":
-            quit(f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
+        if arzaidziam == "N":
+            sys.exit(f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
         else:
             print("Įvedėte negalimą pasirinkimą - bandykite dar kartą.")
     return ejimas, ejimai, langeliai
