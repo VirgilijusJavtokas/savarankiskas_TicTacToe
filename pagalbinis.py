@@ -1,5 +1,5 @@
 """
-Šiame faile yra aprašyti pagalbiniai metodai, kurie padeda atvaizduoti žaidimo
+Šiame faile yra aprašyti pagalbiniai metodai, kurie atvaizduoja žaidimo
 lentelę, priskiria simbolį pagal tai kas atlieka ėjimą, tikrina ar yra
 laimėtojas ir ar žaidėjai nori tęsti žaidimą.
 """
@@ -9,7 +9,7 @@ import sys
 
 def atvaizduoti_lentele(langeliai):
     '''
-    Metodas atvaizduoja žaidimo lentelę.
+    Funkcija atvaizduoja žaidimo lentelę.
     :param langeliai: pradžioje žaidimo laukai nuo 1 iki 9, o po to keičiami
     pagal atitinkamo žaidėjo ėjimą.
     '''
@@ -21,7 +21,7 @@ def atvaizduoti_lentele(langeliai):
 
 def kas_eina(ejimas):
     '''
-    Metodas priskiria kas atlieka ėjimą. Pirmas ir tolimesni nelyginiai ėjimai
+    Funkcija priskiria kas atlieka ėjimą. Pirmas ir tolimesni nelyginiai ėjimai
     yra žaidėjo kuris žaidžia X, o antras ir kiti lyginiai - žaidėjo, kuris
     žaidžia 0.
     :param ejimas: ėjimai nuo 1 iki max. 9
@@ -34,7 +34,7 @@ def kas_eina(ejimas):
 
 def tikrinimas(langeliai):
     """
-    Metodas tikrina ar kuris nors iš žaidėjų laimėjo, t.y. patikrina ar nėra
+    Funkcija tikrina ar kuris nors iš žaidėjų laimėjo, t.y. patikrina ar nėra
     užbrauktos eilutės, stulpeliai ar įstrižainės
     :param langeliai: ima langelius iš lentelės po kiekvieno ėjimo
     :return: ar yra laimėjimas, ar nėra laimėjimo
@@ -54,7 +54,7 @@ def tikrinimas(langeliai):
 
 def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
     """
-    Metodas tikrina kokį pasirinkimą padarė žaidėjas
+    Funkcija tikrina kokį pasirinkimą padarė žaidėjas
     :param zaidejas1: pirmo žaidėjo vardas, kurį jis įvedė
     :param zaidejas2: antro žaidėjo vardas, kurį jis įvedė
     :param x_pergales: pirmo žaidėjo, kuris žaidžia X'u pergalės
@@ -66,10 +66,11 @@ def ar_zaidziam(zaidejas1, zaidejas2, x_pergales, o_pergales):
         arzaidziam = input("Ar norite žaisti dar kartą? (T/N): \n")
         if arzaidziam == "T":
             langeliai = {1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
+            print("")
+            print("Naujas žaidimas prasideda!")
             atvaizduoti_lentele(langeliai)
             ejimas = 1
             ejimai = []
-            print("Naujas žaidimas prasideda!")
             break
         if arzaidziam == "N":
             sys.exit(f"Žaidimas baigtas. {zaidejas1} pergalės: {x_pergales}, {zaidejas2} pergalės: {o_pergales}")
